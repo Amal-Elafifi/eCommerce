@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client';
-import MainLayout from './layouts/mainLayout/MainLayout';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { MainLayout } from '@layouts/index';
 
 
 
