@@ -14,7 +14,6 @@ const MainLayout = () => {
 
         <div className={wrapper}>
           <Outlet/>
-          hello
         </div>
 
         
