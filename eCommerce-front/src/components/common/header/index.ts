@@ -1,3 +1,3 @@
-import HeaderBasket from "../../ecommerce/headerbasket/HeaderBasket";
+import HeaderBasket from "@components/ecommerce/headerbasket/HeaderBasket";
 
 export {HeaderBasket};
