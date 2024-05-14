@@ -1,7 +1,8 @@
+import { NavLink } from "react-router-dom";
 import {HeaderBasket} from "./index";
 import styles from "./styles.module.css";
 
-import { Badge, Container, Nav, NavLink, Navbar } from "react-bootstrap";
+import { Badge, Container, Nav, Navbar } from "react-bootstrap";
 
 
 const {headerContainer, headerLogo} = styles;
