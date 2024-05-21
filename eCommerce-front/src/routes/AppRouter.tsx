@@ -28,6 +28,19 @@ const router =createBrowserRouter([
             {
                 path: "products/:prefix",
                 element: <Products/>,
+                loader: async({params}) => {
+                  if( typeof params.prefix !== "string" ||  !/^[a-z]+$/i.test(params.prefix)
+                    ){
+                      throw new Response(
+                        "Bad Response",
+                        {
+                          statusText: "Category not found",
+                          status: 400
+                        }
+                      )
+                    }
+                  return (true)
+                }
             },
             {
               path: "about-us",
