@@ -14,34 +14,17 @@ const Categories = () => {
 
     },[dispatch])
 
+    const categoriesList = records.length > 0 ? records.map(record => (
+      <Col xs={6} md={3} key={record.id} className="d-flex justify-content-center mb-5 mt-2">
+      <Category {...record}/>
+    </Col>
+    )): "categories not found";
+
 
     return (
         <Container>
       <Row>
-        <Col xs={6} md={3} className="d-flex justify-content-center mb-5 mt-2">
-          <Category />
-        </Col>
-        <Col xs={6} md={3} className="d-flex justify-content-center mb-5 mt-2">
-          <Category />
-        </Col>
-        <Col xs={6} md={3} className="d-flex justify-content-center mb-5 mt-2">
-          <Category />
-        </Col>
-        <Col xs={6} md={3} className="d-flex justify-content-center mb-5 mt-2">
-          <Category />
-        </Col>
-        <Col xs={6} md={3} className="d-flex justify-content-center mb-5 mt-2">
-          <Category />
-        </Col>
-        <Col xs={6} md={3} className="d-flex justify-content-center mb-5 mt-2">
-          <Category />
-        </Col>
-        <Col xs={6} md={3} className="d-flex justify-content-center mb-5 mt-2">
-          <Category />
-        </Col>
-        <Col xs={6} md={3} className="d-flex justify-content-center mb-5 mt-2">
-          <Category />
-        </Col>
+        {categoriesList}
       </Row>
     </Container>
   );
