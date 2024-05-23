@@ -3,17 +3,17 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Category } from ".";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { actGetCategories } from "@store/categories/categoriesSlice";
+import { Loading } from "@components/feedback";
+
 
 const Categories = () => {
     const dispatch = useAppDispatch();
     const {loading, error, records} = useAppSelector(state => state.categories);
 
-    useEffect(() => {
-      
+    useEffect(() => {  
       if(!records.length){
         dispatch(actGetCategories());
       }
-
     },[dispatch])
 
     const categoriesList = records.length > 0 ? records.map(record => (
@@ -25,9 +25,11 @@ const Categories = () => {
 
     return (
         <Container>
-      <Row>
-        {categoriesList}
-      </Row>
+          <Loading status={loading} error={error}>
+            <Row>
+              {categoriesList}
+            </Row>  
+          </Loading> 
     </Container>
   );
 };

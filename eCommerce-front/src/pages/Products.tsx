@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import {actGetProductsbyCatPrefix, productsCleanup } from "@store/products/productsSlice";
 import { Product } from ".";
+import { Loading } from "@components/feedback";
+
 
 const Products = () => {
     const dispatch = useAppDispatch();
@@ -26,9 +28,11 @@ const Products = () => {
     
     return (
         <Container>
+          <Loading status={loading} error={error}>
             <Row>
                 {productsList}
             </Row>
+          </Loading>
         </Container>
   );
 }
