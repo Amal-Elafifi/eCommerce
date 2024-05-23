@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { TProduct } from "@customTypes/product";
 import { TLoading } from "@customTypes/shared";
-import actGetProductsbtCatPrefix from "./act/actGetProductsbyCatPrefix";
+import actGetProductsbyCatPrefix from "./act/actGetProductsbyCatPrefix";
 
 
 interface IProduct {
@@ -19,23 +19,29 @@ const initialState: IProduct = {
 const productsSlice = createSlice({
     name: "product",
     initialState,
-    reducers: {},
+    reducers: {
+      productsCleanup: (state) => {
+        state.records = [];
+      }
+    },
     extraReducers: (builder) =>{
-      builder.addCase(actGetProductsbtCatPrefix.pending, (state) => {
+      builder.addCase(actGetProductsbyCatPrefix.pending, (state) => {
         state.loading = "pending";
         state.error = null;
       }),
-      builder.addCase(actGetProductsbtCatPrefix.fulfilled, (state, action) => {
+      builder.addCase(actGetProductsbyCatPrefix.fulfilled, (state, action) => {
         state.loading = "fulfilled";
         state.records = action.payload;
         state.error = null;
       }),
-      builder.addCase(actGetProductsbtCatPrefix.rejected,(state, action) => {
+      builder.addCase(actGetProductsbyCatPrefix.rejected,(state, action) => {
         state.loading = "rejected";
         state.error = action.payload as string;
       })
     }
 });
 
-export {actGetProductsbtCatPrefix};
+
+export const {productsCleanup} = productsSlice.actions;
+export {actGetProductsbyCatPrefix};
 export default productsSlice.reducer;
