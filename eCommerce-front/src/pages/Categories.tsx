@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { GridList } from ".";
 import { actGetCategories } from ".";
 import { Loading } from "@components/feedback";
+import { Heading } from "@components/common";
 
 const Categories = () => {
   const dispatch = useAppDispatch();
@@ -20,6 +21,7 @@ const Categories = () => {
 
   return (
     <Container>
+      <Heading>Categories</Heading>
       <Loading status={loading} error={error}>
         <GridList
           records={records}
