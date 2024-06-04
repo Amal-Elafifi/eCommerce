@@ -6,6 +6,9 @@ import { Provider } from "react-redux";
 import { PersistGate } from 'redux-persist/integration/react';
 import {store, persistor} from "@store/index";
 
+// axios
+import "@services/globalAxios.js";
+
 // styles
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "@styles/global.css";

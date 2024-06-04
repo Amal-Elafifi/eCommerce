@@ -3,7 +3,7 @@ import { useAppSelector } from "@store/hooks";
 import { Logo, cartItemsQuantitySelector } from ".";
 import styles from "./styles.module.css";
 
-const { basketContainer, basketQuantity, pumpCartQuantity } = styles;
+const { basketContainer, basketQuantity, pumpCartQuantity, basketCart } = styles;
 
 const HeaderBasket = () => {
   const[isAnimated, setIsAnimated] = useState(false);
@@ -24,8 +24,11 @@ const HeaderBasket = () => {
 
   return (
     <div className={basketContainer}>
-      <Logo />
-      <div className={quantityStyle}>{totalQuantitiy}</div>
+      <div className={basketCart}>
+        <Logo />
+        <div className={quantityStyle}>{totalQuantitiy}</div>
+      </div>
+      <h3>Cart</h3>
     </div>
   );
 };
