@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { useAppSelector } from "@store/hooks";
 import { Logo, cartItemsQuantitySelector } from ".";
 import styles from "./styles.module.css";
+import { useNavigate } from "react-router-dom";
 
 const { basketContainer, basketQuantity, pumpCartQuantity, basketCart } = styles;
 
 const HeaderBasket = () => {
+  const navigate = useNavigate();
   const[isAnimated, setIsAnimated] = useState(false);
   const totalQuantitiy = useAppSelector(cartItemsQuantitySelector);
       <div className={basketQuantity}>{totalQuantitiy}</div>
@@ -23,7 +25,7 @@ const HeaderBasket = () => {
   },[totalQuantitiy])
 
   return (
-    <div className={basketContainer}>
+    <div className={basketContainer} onClick={() => navigate("/cart")}>
       <div className={basketCart}>
         <Logo />
         <div className={quantityStyle}>{totalQuantitiy}</div>
