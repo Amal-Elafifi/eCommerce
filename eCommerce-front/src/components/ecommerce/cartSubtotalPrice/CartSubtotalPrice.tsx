@@ -1,13 +1,28 @@
+import { TProduct } from "@customTypes/product";
 import styles from "./style.module.css";
 
 
 const {container} = styles;
 
-const CartSubtotalPrice = () => {
+type CartSubtotalProps = {
+  products: TProduct[]
+}
+
+const CartSubtotalPrice = ({products}: CartSubtotalProps) => {
+  const subtotal = products.reduce((accumulator, el) => {
+      const itemPrice = el.price;
+      const quantity = el.quantity;
+      if(quantity && typeof quantity === "number"){
+        return accumulator + itemPrice * quantity
+      }else {return accumulator}
+
+  }, 0)
+
+
   return (
     <div className={container}>
       <span>Subtotal Price: </span>
-      <span>200.00</span>
+      <span>{subtotal.toFixed(2)}</span>
     </div>
   )
 }

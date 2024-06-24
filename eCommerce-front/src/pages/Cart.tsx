@@ -33,9 +33,11 @@ const Cart = () => {
     <>
       <Heading>Cart</Heading>
       <Loading status={loading} error={error}>
-        <CartItemList products={products} changeQuantityHandler={changeQuantityHandler} removeItemHamdler= {removeItemHandler}/>
-        <CartSubtotalPrice/>
-      </Loading>
+        {products.length ? <>
+            <CartItemList products={products} changeQuantityHandler={changeQuantityHandler} removeItemHamdler= {removeItemHandler}/>
+            <CartSubtotalPrice products= {products}/>
+        </>: "your cart is empty"}
+        </Loading>
     </>
   )
 }
