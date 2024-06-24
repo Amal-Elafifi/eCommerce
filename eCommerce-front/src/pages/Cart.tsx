@@ -1,8 +1,8 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@store/hooks.ts";
 import { Heading } from "@components/common"
 import {  CartItemList, CartSubtotalPrice } from "./index.ts";
-import { actGetProductsByItems } from "@store/cart/CartSlice.ts";
+import { actGetProductsByItems, cartItemsChangeQuantity, cartItemRemove } from "@store/cart/CartSlice.ts";
 import { Loading } from "@components/feedback/index.ts";
 
 
@@ -21,11 +21,19 @@ const Cart = () => {
     })
   );
 
+  const changeQuantityHandler =useCallback( (id: number, quantity: number) => {
+    dispatch(cartItemsChangeQuantity({id, quantity}))
+  }, [dispatch])
+
+  const removeItemHandler = useCallback((id: number) => {
+    dispatch(cartItemRemove(id))
+  }, [dispatch])
+
   return(
     <>
       <Heading>Cart</Heading>
       <Loading status={loading} error={error}>
-        <CartItemList products={products}/>
+        <CartItemList products={products} changeQuantityHandler={changeQuantityHandler} removeItemHamdler= {removeItemHandler}/>
         <CartSubtotalPrice/>
       </Loading>
     </>

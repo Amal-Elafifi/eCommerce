@@ -1,14 +1,19 @@
+import { memo } from "react";
 import { Form, Button } from "react-bootstrap";
 import styles from "./style.module.css" 
 import { TProduct } from "@customTypes/product";
+import React from "react";
 
 
 const { cartItem, product, productImg, productInfo, cartItemSelection } =
   styles;
 
-type CartItemProps= TProduct;
+type CartItemProps= TProduct & {
+  changeQuantityHandler: (id: number, quantity: number) => void,
+  removeItemHamdler: (id: number) => void
+};
 
-const CartItem = ({title, price, img, max, quantity}: CartItemProps) => {
+const CartItem = memo(({id, title, price, img, max, quantity, changeQuantityHandler, removeItemHamdler}: CartItemProps) => {
 
   const renderedOptions = Array(max).fill(0).map((_, idx) => {
     const quantity = ++idx;
@@ -18,6 +23,13 @@ const CartItem = ({title, price, img, max, quantity}: CartItemProps) => {
         </option>
     )
   })
+
+ const changeQuantity = (event: React.ChangeEvent<HTMLSelectElement>) =>{
+    const quantity = +event.target.value;
+    changeQuantityHandler(id, quantity)
+  }
+
+
 
   return (
     <div className={cartItem}>
@@ -35,6 +47,7 @@ const CartItem = ({title, price, img, max, quantity}: CartItemProps) => {
             variant="secondary"
             style={{ color: "white", width: "100px" }}
             className="mt-auto"
+            onClick={() => removeItemHamdler(id)}
           >
             Remove
           </Button>
@@ -43,12 +56,12 @@ const CartItem = ({title, price, img, max, quantity}: CartItemProps) => {
 
       <div className={cartItemSelection}>
         <span className="d-block mb-1">Quantity</span>
-        <Form.Select value={quantity} aria-label="Default select example">
+        <Form.Select value={quantity} aria-label="Default select example" onChange={changeQuantity}>
           {renderedOptions}
         </Form.Select>
       </div>
     </div>
   );
-};
+});
 
 export default CartItem;
