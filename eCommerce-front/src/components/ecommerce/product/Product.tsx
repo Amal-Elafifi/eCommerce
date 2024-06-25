@@ -6,8 +6,10 @@ import styles from "./style.module.css";
 import { TProduct } from "@customTypes/product";
 import { useAppDispatch } from "@store/hooks";
 import { addToCart } from "@store/cart/CartSlice";
+import Like from "@assets/svg/like.svg?react";
+import Dislike from "@assets/svg/dislike.svg?react";
 
-const { product, productImg, maximumNotice } = styles;
+const { product, productImg, maximumNotice, wishlist} = styles;
 
 const Product = memo(({ id, title, img, price, max, quantity }: TProduct) => {
   const dispatch = useAppDispatch();
@@ -33,6 +35,7 @@ const Product = memo(({ id, title, img, price, max, quantity }: TProduct) => {
 
   return (
     <div className={product}>
+      <Dislike className={wishlist}/>
       <div className={productImg}>
         <img src={img} alt={title} />
       </div>
