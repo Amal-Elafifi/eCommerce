@@ -2,7 +2,7 @@ import { useCallback, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@store/hooks.ts";
 import { Heading } from "@components/common"
 import {  CartItemList, CartSubtotalPrice } from "./index.ts";
-import { actGetProductsByItems, cartItemsChangeQuantity, cartItemRemove } from "@store/cart/CartSlice.ts";
+import { actGetProductsByItems, cartItemsChangeQuantity, cartItemRemove, cartCleanUp } from "@store/cart/CartSlice.ts";
 import { Loading } from "@components/feedback/index.ts";
 
 
@@ -13,6 +13,9 @@ const Cart = () => {
 
   useEffect(() => {
     dispatch(actGetProductsByItems())
+    return () => {
+      dispatch(cartCleanUp());
+    }
   }, [dispatch])
 
   const products = productsFullInfo.map(product => ({
