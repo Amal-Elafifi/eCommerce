@@ -15,6 +15,7 @@ const { product, productImg, maximumNotice, wishlist} = styles;
 const Product = memo(({ id, title, img, price, max, quantity, isLiked }: TProduct) => {
   const dispatch = useAppDispatch();
   const [isDisabled, setIsDisabled] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const remainingQuantity = max - (quantity ?? 0) ;
   const quantityReachedToMax = remainingQuantity === 0 ? true : false;
 
@@ -35,13 +36,22 @@ const Product = memo(({ id, title, img, price, max, quantity, isLiked }: TProduc
   };
 
   const likeToggleHandler = () => {
-    dispatch(actLikeToggle(id))
+    
+    if(!isLoading){
+      setIsLoading(true);
+      dispatch(actLikeToggle(id))
+      .unwrap()
+      .then(()=> setIsLoading(false))
+      .catch(()=>setIsLoading(false));
+
+    }
+
   }
 
   return (
     <div className={product} onClick={ likeToggleHandler }>
       <div className={wishlist}>
-        {isLiked? <Like/> : <Dislike/>}
+        {isLoading?( <Spinner animation="border" variant="primary" size="sm"/>): isLiked? <Like/> : <Dislike/>}
       </div>
       <div className={productImg}>
         <img src={img} alt={title} />

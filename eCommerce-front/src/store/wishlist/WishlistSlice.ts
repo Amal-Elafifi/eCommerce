@@ -1,15 +1,22 @@
-import {createSlice, isAction} from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 import actLikeToggle from "./act/actLikeToggle";
+import actGetWishlist from "./act/actGetWishlist";
+import { TLoading } from "@customTypes/shared";
+import { TProduct } from "@customTypes/product";
 
 
 interface IWishlistState {
   itemsId: number[],
-  error:  null |string
+  productsFullInfo: TProduct[],
+  error:  null |string,
+  loading: TLoading
 }
 
 const initialState: IWishlistState = {
   itemsId: [],
-  error: null
+  productsFullInfo: [],
+  error: null,
+  loading: "idle"
 }
 
 
@@ -33,6 +40,21 @@ const WishlistSlice = createSlice({
         state.error = action.payload;
       }
     }) ;
+    // actGetWishlist items
+    builder.addCase(actGetWishlist.pending, (state)=>{
+      state.loading= "pending"
+      state.error= null;
+    });
+    builder.addCase(actGetWishlist.fulfilled, (state, action)=>{
+      state.loading= "fulfilled";
+      state.productsFullInfo = action.payload;
+      state.error= null;
+    });
+    builder.addCase(actGetWishlist.rejected, (state, action)=>{
+      state.loading= "rejected";
+      if(action.payload && typeof action.payload === "string")
+        state.error= action.payload;
+    });
   }
 })
 
@@ -40,5 +62,5 @@ const WishlistSlice = createSlice({
 
 
 
+export {actLikeToggle, actGetWishlist};
 export default WishlistSlice.reducer;
-export {actLikeToggle};
