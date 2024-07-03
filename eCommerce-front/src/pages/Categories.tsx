@@ -6,6 +6,7 @@ import { GridList } from ".";
 import { actGetCategories } from ".";
 import { Loading } from "@components/feedback";
 import { Heading } from "@components/common";
+import { categoriesRecordsCleanUP } from "@store/categories/categoriesSlice";
 
 const Categories = () => {
   const dispatch = useAppDispatch();
@@ -14,14 +15,15 @@ const Categories = () => {
   );
 
   useEffect(() => {
-    if (!records.length) {
+
       dispatch(actGetCategories());
-    }
+      return () =>{ dispatch(categoriesRecordsCleanUP())}
+    
   }, [dispatch]);
 
   return (
     <Container>
-      <Heading>Categories</Heading>
+      <Heading title="Categories" />
       <Loading status={loading} error={error}>
         <GridList
           records={records}

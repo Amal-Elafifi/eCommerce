@@ -34,7 +34,7 @@ const Cart = () => {
 
   return(
     <>
-      <Heading>Cart</Heading>
+      <Heading title="your Cart" />
       <Loading status={loading} error={error}>
         {products.length ? <>
             <CartItemList products={products} changeQuantityHandler={changeQuantityHandler} removeItemHamdler= {removeItemHandler}/>

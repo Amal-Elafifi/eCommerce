@@ -1,9 +1,9 @@
-import React from "react"
+import React, { memo } from "react"
 
-const Heading = ({children}: {children: React.ReactNode}) => {
+const Heading = memo(({title}: {title: React.ReactNode}) => {
   return(
-    <h2 className="mb-3" style={{fontSize: "26px"}}>{children}</h2>
+    <h2 className="mb-3 text-capitalize" style={{fontSize: "26px"}}>{title}</h2>
   )
-}
+});
 
 export default Heading;

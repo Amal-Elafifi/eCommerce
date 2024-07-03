@@ -1,5 +1,5 @@
 import Product from "@components/ecommerce/product/Product";
-import {actGetProductsbyCatPrefix,productsCleanup}
+import {actGetProductsbyCatPrefix,productsRecordsCleanup}
         from "@store/products/productsSlice";
 import Category from "@components/ecommerce/category/Category";
 import GridList from "@components/common/gridList/GridList";
@@ -18,7 +18,7 @@ export {
     GridList,
     actGetCategories,
     actGetProductsbyCatPrefix,
-    productsCleanup,
+    productsRecordsCleanup,
     CartItem,
     CartSubtotalPrice,
     CartItemList

@@ -20,7 +20,7 @@ const productsSlice = createSlice({
     name: "product",
     initialState,
     reducers: {
-      productsCleanup: (state) => {
+      productsRecordsCleanup: (state) => {
         state.records = [];
       }
     },
@@ -42,6 +42,6 @@ const productsSlice = createSlice({
 });
 
 
-export const {productsCleanup} = productsSlice.actions;
+export const {productsRecordsCleanup} = productsSlice.actions;
 export {actGetProductsbyCatPrefix};
 export default productsSlice.reducer;

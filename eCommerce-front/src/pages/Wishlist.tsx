@@ -1,7 +1,7 @@
 import { Container} from "react-bootstrap";
 import { Heading } from "@components/common"
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { actGetWishlist, productsFullInfoCleanUp } from "@store/wishlist/WishlistSlice";
+import { actGetWishlist, wishlistProductsFullInfoCleanUp } from "@store/wishlist/WishlistSlice";
 import { useEffect } from "react";
 import { Loading } from "@components/feedback";
 import { GridList, Product} from "./index";
@@ -17,7 +17,7 @@ const Wishlist = () => {
   useEffect(() => {
     dispatch(actGetWishlist());
     return () => {
-      dispatch(productsFullInfoCleanUp())
+      dispatch(wishlistProductsFullInfoCleanUp())
     }
   }, [dispatch])
 
@@ -33,9 +33,7 @@ const Wishlist = () => {
 
   return (
     <Container>
-      <Heading >
-        <span className="text-capitalize">your wishlist</span> 
-      </Heading>
+      <Heading title="Your Wishlist"/>
       <Loading status={loading} error={error}>
         <GridList records={records} renderItem={(record) => <Product {...record}/>}/>
       </Loading>

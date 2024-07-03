@@ -2,7 +2,7 @@ import { Container} from "react-bootstrap";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import {actGetProductsbyCatPrefix, productsCleanup} from "./index";
+import {actGetProductsbyCatPrefix, productsRecordsCleanup} from "./index";
 import { Product } from "./index";
 import { Loading } from "@components/feedback";
 import { GridList} from "./index";
@@ -26,16 +26,14 @@ const Products = () => {
   useEffect(() => {
     dispatch(actGetProductsbyCatPrefix(params.prefix as string));
     return () => {
-      dispatch(productsCleanup());
+      dispatch(productsRecordsCleanup());
     };
   }, [dispatch, params]);
 
 
   return (
     <Container>
-      <Heading >
-        <span className="text-capitalize">{params.prefix}</span> Products
-      </Heading>
+      <Heading title={`${params.prefix} Products`} />
       <Loading status={loading} error={error}>
         <GridList records={productFullInfo} renderItem={(record) => <Product {...record}/>}/>
       </Loading>
