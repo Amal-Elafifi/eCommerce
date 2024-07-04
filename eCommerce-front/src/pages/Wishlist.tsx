@@ -1,8 +1,8 @@
 import { Container} from "react-bootstrap";
+import useWishlist from "@hooks/useWishlist";
 import { Heading } from "@components/common"
 import { Loading } from "@components/feedback";
 import { GridList, Product} from "./index";
-import useWishlist from "@hooks/useWishlist";
 
 
 const Wishlist = () => {

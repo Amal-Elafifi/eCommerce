@@ -1,8 +1,8 @@
 import { Container } from "react-bootstrap";
+import useCategories from "@hooks/useCategories";
 import { Category, GridList } from "./index";
 import { Loading } from "@components/feedback";
 import { Heading } from "@components/common";
-import useCategories from "@hooks/useCategories";
 
 const Categories = () => {
   const{loading, error, records} = useCategories();

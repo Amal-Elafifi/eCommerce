@@ -1,7 +1,7 @@
+import useCart from "@hooks/useCart.ts";
 import { Heading } from "@components/common"
 import {  CartItemList, CartSubtotalPrice } from "./index.ts";
 import { Loading } from "@components/feedback/index.ts";
-import useCart from "@hooks/useCart.ts";
 
 
 
