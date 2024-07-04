@@ -5,11 +5,12 @@ import axios from "axios";
 
 type TResponse = TProduct[];
 
-const actGetProductsbyCatPrefix = createAsyncThunk<TResponse>("products/actGetProductsbyCatPrefix", async(prefix: string, thunkAPI)=> {
+const actGetProductsbyCatPrefix = createAsyncThunk("products/actGetProductsbyCatPrefix",
+                                  async(prefix: string, thunkAPI)=> {
   const {rejectWithValue} = thunkAPI;
 
   try {
-    const response = await axios.get(`/products?cat_prefix=${prefix}`);
+    const response = await axios.get<TResponse>(`/products?cat_prefix=${prefix}`);
     return response.data;
     
   } catch (error) {
