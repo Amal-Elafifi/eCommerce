@@ -1,5 +1,6 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import {axiosErrorHandler} from "@utils";
 
 
 const actLikeToggle = createAsyncThunk("wishlist/actLikeToggle", async(id: number, thunkAPI) => {
@@ -17,11 +18,7 @@ const actLikeToggle = createAsyncThunk("wishlist/actLikeToggle", async(id: numbe
 
 
     } catch (error) {
-      if(axios.isAxiosError(error)){
-        return rejectWithValue(error.message|| error.response?.data.message);
-      }else{
-        return rejectWithValue("unexpected error")
-      }
+      return rejectWithValue(axiosErrorHandler(error))
     }
 })
 

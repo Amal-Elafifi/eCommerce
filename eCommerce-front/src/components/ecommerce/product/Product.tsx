@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import Spinner from "react-bootstrap/Spinner";
 import styles from "./style.module.css";
 
-import { TProduct } from "@customTypes/product";
+import { TProduct } from "@types";
 import { useAppDispatch } from "@store/hooks";
 import { addToCart } from "@store/cart/CartSlice";
 import { actLikeToggle } from "@store/wishlist/WishlistSlice";

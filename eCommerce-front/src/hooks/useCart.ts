@@ -12,9 +12,10 @@ const useCart = () => {
   const {items, loading, error, productsFullInfo} = useAppSelector(state=> state.Cart);
 
   useEffect(() => {
-    dispatch(actGetProductsByItems())
+    const promise = dispatch(actGetProductsByItems());
     return () => {
       dispatch(cartCleanUp());
+      promise.abort();
     }
   }, [dispatch])
 

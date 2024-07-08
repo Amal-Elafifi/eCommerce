@@ -10,9 +10,10 @@ const useWishlist = () => {
 
 
   useEffect(() => {
-    dispatch(actGetWishlist());
+    const promise = dispatch(actGetWishlist());
     return () => {
-      dispatch(wishlistProductsFullInfoCleanUp())
+      dispatch(wishlistProductsFullInfoCleanUp());
+      promise.abort();
     }
   }, [dispatch])
 
