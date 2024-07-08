@@ -1,4 +1,5 @@
-import { TLoading } from "@customTypes/shared";
+import { TLoading } from "@types";
+import CategoriesSkeleton from "../skeletons/CategoriesSkeleton";
 
 type LoadingProps = {
   status : TLoading,
@@ -8,7 +9,7 @@ type LoadingProps = {
 
 const Loading = ({status, error, children} : LoadingProps) => {
   if(status === "pending"){
-    return <div>loading.... please wait </div>
+    return <CategoriesSkeleton/>
   }else if(status === "rejected"){
     return <div>{error}</div>
   }
