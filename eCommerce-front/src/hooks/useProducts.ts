@@ -17,7 +17,7 @@ const useProducts = () => {
     {
       ...ele,
       quantity: cartItems[ele.id] || 0,
-      isLiked: wishlistItemsId.includes(ele.id)
+      isLiked: wishlistItemsId.includes(ele.id), 
     }
   ));
 

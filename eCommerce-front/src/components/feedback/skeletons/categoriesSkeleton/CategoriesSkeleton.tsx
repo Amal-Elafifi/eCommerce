@@ -13,8 +13,8 @@ const CategoriesSkeleton = () => {
         backgroundColor="#f0f0f0"
         foregroundColor="#ffffff"
       >
-        <rect x="54" y="161" rx="4" ry="4" width="93" height="6" />
-        <circle cx="100" cy="72" r="70" /> 
+        <rect x="61" y="179" rx="3" ry="3" width="85" height="6" />
+        <circle cx="104" cy="84" r="84" /> 
       </ContentLoader>
     </Col>
   ))
