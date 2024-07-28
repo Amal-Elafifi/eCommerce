@@ -4,7 +4,7 @@ import AppRouter from "@routes/AppRouter";
 // redux
 import { Provider } from "react-redux";
 import { PersistGate } from 'redux-persist/integration/react';
-import {store, persistor} from "@store/index";
+import {store, persistor} from "@store";
 
 // axios
 import "@services/globalAxios.js";

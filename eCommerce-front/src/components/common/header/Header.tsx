@@ -1,21 +1,24 @@
 import { NavLink } from "react-router-dom";
-import {HeaderBasket} from "./index";
-import styles from "./styles.module.css";
-
 import { Badge, Container, Nav, Navbar } from "react-bootstrap";
+
+
+import HeaderLeftBar from "./headerLeftBar/HeaderLeftBar";
+import styles from "./styles.module.css";
 
 
 const {headerContainer, headerLogo} = styles;
 
 const Header = () => {
 
+
+
   return(
     <header >
       <div className={headerContainer}>
         <h1 className={headerLogo}>
-          <span>Our</span> <Badge bg="info">Ecom</Badge>
+          <span>Our</span> <Badge bg="info">eCom</Badge>
         </h1>
-       <HeaderBasket/>
+       <HeaderLeftBar/>
       </div>
       <Navbar 
           expand="lg"

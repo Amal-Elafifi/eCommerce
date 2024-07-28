@@ -1,16 +1,33 @@
-import { TLoading } from "@customTypes/shared";
+import { TLoading } from "@types";
+import CategoriesSkeleton from "../skeletons/categoriesSkeleton/CategoriesSkeleton";
+import ProductSkeleton  from "../skeletons/productSkeleton/ProductSkeleton";
+import CartSkeleton from "../skeletons/cartSkeleton/CartSkeleton";
+import WishlistSkeleton from "../skeletons/wishlistSkeleton/WishlistSkeleton";
+import LottieHandler from "../lottiefileshandler/LottieHandler";
 
-type LoadingProps = {
-  status : TLoading,
-  children: React.ReactNode,
-  error: null | string
-}
+const skeletonsTypes = {
+  category: CategoriesSkeleton,
+  product: ProductSkeleton,
+  cart: CartSkeleton,
+  wishlist: WishlistSkeleton
+  }
+  
+  type LoadingProps = {
+    status : TLoading,
+    children: React.ReactNode,
+    error: null | string,
+    type: keyof typeof skeletonsTypes
+  }
+const Loading = ({status, error, children, type} : LoadingProps) => {
+  
 
-const Loading = ({status, error, children} : LoadingProps) => {
+  const Component = skeletonsTypes[type]
+
   if(status === "pending"){
-    return <div>loading.... please wait </div>
+    return <Component/>
+     
   }else if(status === "rejected"){
-    return <div>{error}</div>
+    return <LottieHandler type="networkError" message={error as string} />
   }
 
   return <>{children}</>

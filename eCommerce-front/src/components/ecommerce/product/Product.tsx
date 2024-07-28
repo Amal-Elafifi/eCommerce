@@ -3,15 +3,19 @@ import { Button } from "react-bootstrap";
 import Spinner from "react-bootstrap/Spinner";
 import styles from "./style.module.css";
 
-import { TProduct } from "@customTypes/product";
+import { TProduct } from "@types";
 import { useAppDispatch } from "@store/hooks";
 import { addToCart } from "@store/cart/CartSlice";
+import { actLikeToggle } from "@store/wishlist/WishlistSlice";
+import Like from "@assets/svg/like.svg?react";
+import Dislike from "@assets/svg/dislike.svg?react";
 
-const { product, productImg, maximumNotice } = styles;
+const { product, productImg, maximumNotice, wishlist} = styles;
 
-const Product = memo(({ id, title, img, price, max, quantity }: TProduct) => {
+const Product = memo(({ id, title, img, price, max, quantity, isLiked }: TProduct) => {
   const dispatch = useAppDispatch();
   const [isDisabled, setIsDisabled] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const remainingQuantity = max - (quantity ?? 0) ;
   const quantityReachedToMax = remainingQuantity === 0 ? true : false;
 
@@ -31,8 +35,24 @@ const Product = memo(({ id, title, img, price, max, quantity }: TProduct) => {
     setIsDisabled(true);
   };
 
+  const likeToggleHandler = () => {
+    
+    if(!isLoading){
+      setIsLoading(true);
+      dispatch(actLikeToggle(id))
+      .unwrap()
+      .then(()=> setIsLoading(false))
+      .catch(()=>setIsLoading(false));
+
+    }
+
+  }
+
   return (
-    <div className={product}>
+    <div className={product} onClick={ likeToggleHandler }>
+      <div className={wishlist}>
+        {isLoading?( <Spinner animation="border" variant="primary" size="sm"/>): isLiked? <Like/> : <Dislike/>}
+      </div>
       <div className={productImg}>
         <img src={img} alt={title} />
       </div>

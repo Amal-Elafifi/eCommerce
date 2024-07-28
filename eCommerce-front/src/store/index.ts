@@ -9,6 +9,7 @@ import { persistReducer,
   PURGE,
   REGISTER
  } from "redux-persist";
+ import wishlist from "@store/wishlist/WishlistSlice";
 import storage from "redux-persist/lib/storage";
 import categories from "./categories/categoriesSlice";
 import product from "./products/productsSlice";
@@ -22,10 +23,17 @@ const cartPersistConfig = {
   whiteList: ["items"]
 }
 
+const wishlistPersistConfig = {
+  key: "wishlist",
+  storage,
+  whiteList: ["itemsId"]
+}
+
 const rootReducer = combineReducers({
   categories,
   product,
-  Cart: persistReducer(cartPersistConfig, Cart)
+  Cart: persistReducer(cartPersistConfig, Cart),
+  wishlist: persistReducer(wishlistPersistConfig, wishlist)
 });
 
 

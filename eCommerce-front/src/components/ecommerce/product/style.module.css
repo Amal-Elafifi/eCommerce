@@ -1,8 +1,9 @@
 .product {
-  width: 120px;
+  width: 130px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
 
 .productImg {
@@ -17,7 +18,7 @@
 
 .product h2 {
   font-size: 15px;
-  margin-top: 9px;
+  margin-top: 22px;
   margin-bottom: 12px;
   width: 100%;
 
@@ -31,4 +32,22 @@
 .maximumNotice {
   font-size: 12px;
   margin-bottom: 7px;
+}
+
+.wishlist {
+  position: absolute;
+  background-color: white;
+  right: 7px;
+  top: 7px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  cursor: pointer;
+  }
+  .wishlist:hover {
+    
+    box-shadow: 0 0 10px -3px rgb(0, 0, 0, 0.4);
 }
