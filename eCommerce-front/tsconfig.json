@@ -29,7 +29,8 @@
       "@store": ["src/store/index"],
       "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/utils/*"],
-      "@utils": ["src/utils/index"]
+      "@utils": ["src/utils/index"],
+      "@validations/*": ["src/validations/*"]
     },
     /* Linting */
     "strict": true,
