@@ -33,7 +33,7 @@ const Register = () => {
     }
 
     if(isDirty && invalid && enteredEmail){
-      resetEmailChecking();
+      resetEmailChecking(); 
     }
 
   }
@@ -60,16 +60,22 @@ const Register = () => {
               label="Email" 
               name="email" 
               register={register}
-              error={errors?.email?.message as string}
+              error={errors?.email?.message? errors?.email?.message as string:
+                    emailAvailability === "notAvailable"? "Email is used": emailAvailability === "failed"? "Eroor from The server": ""}
               onBlur={emailOnBlurHandler}
+              formText={ emailAvailability === "checking"? "Checking email availability ...please wait": ""}
+              success={emailAvailability === "available"? "Available to use" : ""}
+              disabled={emailAvailability === "checking"? true: false}
             />
             <Input 
+            type="password"
               label="Password"
               name="password"
               register={register}
               error={errors?.password?.message as string}
             />
             <Input 
+              type="password"
               label="Confirm Password"
               name="confirmPassword" 
               register={register} 
@@ -79,6 +85,7 @@ const Register = () => {
               variant="info" 
               type="submit" 
               style={{color: "white"}}
+              disabled={emailAvailability === "checking"? true: false}
             >
               Submit
             </Button>

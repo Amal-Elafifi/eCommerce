@@ -11,7 +11,7 @@ const useEmailAvailabilityChecking = () => {
     setEnteredEmail(email);
     setEmailAvailability("checking")
     try {
-      const response = await axios.get(`/Users?/email=${email}`);
+      const response = await axios.get(`/Users?email=${email}`);
   
       if(!response.data.length){
         setEmailAvailability("available")

@@ -25,6 +25,7 @@ const Login = () => {
               register={register}
             />       
             <Input 
+              type="password"
               label="Password"
               name="password" 
               register={register} 
