@@ -1,3 +1,4 @@
+import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { Heading } from '@components/common';
 import {Form, Button, Row, Col} from 'react-bootstrap';
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -5,9 +6,13 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { signUpScheme, signupType } from '@validations/SignupScheme';
 import { Input } from '@components/form/input';
 import useEmailAvailabilityChecking from '@hooks/useEmailAvailabilityChecking';
+import { actAuthRegister } from '@store/auth/authSlice';
 
 
 const Register = () => {
+  const dispatch = useAppDispatch();
+  const {loading, error} = useAppSelector(state => state.auth)
+
   const {register,
     handleSubmit,
     formState: {errors},
@@ -22,7 +27,11 @@ const Register = () => {
   );
   const {emailAvailability, enteredEmail, checkingEmailAvailability, resetEmailChecking} = useEmailAvailabilityChecking();
 
-  const formSubmit: SubmitHandler<signupType> = (data) => {console.log(data)};
+  const formSubmit: SubmitHandler<signupType> = (data) => {
+    const {firstName, lastName, email, password} = data;
+
+    dispatch(actAuthRegister({firstName, lastName, email, password}))
+  };
 
   const emailOnBlurHandler= async(e: React.FocusEvent<HTMLInputElement>) => {
     await trigger("email");
