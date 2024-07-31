@@ -14,6 +14,7 @@ import storage from "redux-persist/lib/storage";
 import categories from "./categories/categoriesSlice";
 import product from "./products/productsSlice";
 import Cart from "./cart/CartSlice";
+import auth from "./auth/authSlice";
 
 
 
@@ -30,6 +31,7 @@ const wishlistPersistConfig = {
 }
 
 const rootReducer = combineReducers({
+  auth,
   categories,
   product,
   Cart: persistReducer(cartPersistConfig, Cart),
@@ -53,4 +55,4 @@ export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;
 
-export { store, persistor };
+export { store, persistor};
