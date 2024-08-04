@@ -7,20 +7,44 @@ interface IAuthState {
   loading: TLoading,
   error: string| null,
   accessToken: string,
-  user: object
+  user: {
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string
+  }
 }
 
 const initialState: IAuthState = {
   loading: "idle",
   error: null,
   accessToken: "",
-  user: {}
+  user: {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: ""
+  }
 }
 
 const AuthSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    resetUI: (state)=>{
+      state.loading = "idle",
+      state.error= null
+    },
+    logOut: (state) => {
+      state.user = {
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: ""
+      },
+      state.accessToken = "";
+    }
+  },
   extraReducers: (builder) => {
     // register
     builder.addCase(actAuthRegister.pending, state => {
@@ -54,4 +78,5 @@ const AuthSlice = createSlice({
 })
 
 export {actAuthRegister, actAuthLogin};
+export const {resetUI, logOut}= AuthSlice.actions;
 export default AuthSlice.reducer;

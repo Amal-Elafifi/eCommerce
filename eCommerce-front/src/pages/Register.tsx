@@ -7,7 +7,8 @@ import { Heading } from '@components/common';
 import { signUpScheme, signupType } from '@validations/SignupScheme';
 import { Input } from '@components/form/input';
 import useEmailAvailabilityChecking from '@hooks/useEmailAvailabilityChecking';
-import { actAuthRegister } from '@store/auth/authSlice';
+import { actAuthRegister, resetUI } from '@store/auth/authSlice';
+import { useEffect } from 'react';
 
 
 const Register = () => {
@@ -32,6 +33,12 @@ const Register = () => {
         checkingEmailAvailability,
         resetEmailChecking} 
         = useEmailAvailabilityChecking();
+
+  useEffect(()=>{
+    return() => {
+      dispatch(resetUI())
+    }
+  },[dispatch])
 
   const formSubmit: SubmitHandler<signupType> = (data) => {
     const {firstName, lastName, email, password} = data;
@@ -98,7 +105,8 @@ const Register = () => {
               name="confirmPassword" 
               register={register} 
               error={errors?.confirmPassword?.message as string} 
-            />
+              />
+              {error && <p style={{color: "#DC3545", marginTop: "10px"}}>{error}</p>}
             <Button 
               variant="info" 
               type="submit" 
@@ -113,7 +121,6 @@ const Register = () => {
               
               }
             </Button>
-            {error && <p style={{color: "#DC3545", marginTop: "10px"}}>{error}</p>}
           </Form>
         </Col>
       </Row>
