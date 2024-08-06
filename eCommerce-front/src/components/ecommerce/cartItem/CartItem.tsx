@@ -2,7 +2,6 @@ import { memo } from "react";
 import { Form, Button } from "react-bootstrap";
 import styles from "./style.module.css" 
 import { TProduct } from "@types";
-import React from "react";
 
 
 const { cartItem, product, productImg, productInfo, cartItemSelection } =
@@ -10,10 +9,10 @@ const { cartItem, product, productImg, productInfo, cartItemSelection } =
 
 type CartItemProps= TProduct & {
   changeQuantityHandler: (id: number, quantity: number) => void,
-  removeItemHamdler: (id: number) => void
+  removeItemHandler: (id: number) => void
 };
 
-const CartItem = memo(({id, title, price, img, max, quantity, changeQuantityHandler, removeItemHamdler}: CartItemProps) => {
+const CartItem = memo(({id, title, price, img, max, quantity, changeQuantityHandler, removeItemHandler}: CartItemProps) => {
 
   const renderedOptions = Array(max).fill(0).map((_, idx) => {
     const quantity = ++idx;
@@ -47,7 +46,7 @@ const CartItem = memo(({id, title, price, img, max, quantity, changeQuantityHand
             variant="secondary"
             style={{ color: "white", width: "100px" }}
             className="mt-auto"
-            onClick={() => removeItemHamdler(id)}
+            onClick={() => removeItemHandler(id)}
           >
             Remove
           </Button>

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector} from '@store/hooks';
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -14,7 +14,7 @@ import { useEffect } from 'react';
 const Register = () => {
   const navigate= useNavigate();
   const dispatch = useAppDispatch();
-  const {loading, error} = useAppSelector(state => state.auth)
+  const {loading, error, accessToken} = useAppSelector(state => state.auth)
 
   const {register,
     handleSubmit,
@@ -40,6 +40,10 @@ const Register = () => {
     }
   },[dispatch])
 
+  if(accessToken){
+    <Navigate to="/"/>
+  }     
+
   const formSubmit: SubmitHandler<signupType> = (data) => {
     const {firstName, lastName, email, password} = data;
 
@@ -48,6 +52,8 @@ const Register = () => {
       navigate("/login?message=successfully_created");    
     })
   };
+
+ 
 
   const emailOnBlurHandler= async(e: React.FocusEvent<HTMLInputElement>) => {
     await trigger("email");

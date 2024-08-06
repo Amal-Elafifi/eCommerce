@@ -11,7 +11,8 @@ interface IAuthState {
     firstName: string,
     lastName: string,
     email: string,
-    password: string
+    password: string,
+    id: number
   }
 }
 
@@ -23,7 +24,8 @@ const initialState: IAuthState = {
     firstName: "",
     lastName: "",
     email: "",
-    password: ""
+    password: "",
+    id: 0
   }
 }
 
@@ -40,7 +42,8 @@ const AuthSlice = createSlice({
         firstName: "",
         lastName: "",
         email: "",
-        password: ""
+        password: "",
+        id: 0
       },
       state.accessToken = "";
     }
