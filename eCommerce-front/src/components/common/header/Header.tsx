@@ -3,8 +3,10 @@ import { Badge, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 
 import HeaderLeftBar from "./headerLeftBar/HeaderLeftBar";
 import styles from "./styles.module.css";
-import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { useAppDispatch, useAppSelector} from "@store/hooks";
 import { logOut } from "@store/auth/authSlice";
+import { useEffect } from "react";
+import { actGetWishlist } from "@store/wishlist/WishlistSlice";
 
 
 const {headerContainer, headerLogo} = styles;
@@ -12,6 +14,12 @@ const {headerContainer, headerLogo} = styles;
 const Header = () => {
   const{accessToken, user} = useAppSelector(state => state.auth);
   const dispatch = useAppDispatch();
+
+  useEffect(()=>{
+    if(accessToken){
+      dispatch(actGetWishlist("productIds"))
+    }
+  }, [accessToken, dispatch])
 
   return(
     <header >
@@ -43,7 +51,7 @@ const Header = () => {
             </> :
             <>
               <NavDropdown title={`Welcome: ${user?.firstName} ${user?.lastName}`} id="basic-nav-dropdown">
-                <NavDropdown.Item >Profile</NavDropdown.Item>
+                <NavDropdown.Item as={NavLink} to="profile" >Profile</NavDropdown.Item>
                 <NavDropdown.Item >
                   Orders
                 </NavDropdown.Item>
