@@ -10,7 +10,7 @@ const useWishlist = () => {
 
 
   useEffect(() => {
-    const promise = dispatch(actGetWishlist());
+    const promise = dispatch(actGetWishlist("productsFullInfo"));
     return () => {
       dispatch(wishlistProductsFullInfoCleanUp());
       promise.abort();
@@ -22,7 +22,8 @@ const useWishlist = () => {
     {
       ...ele,
       quantity: cartItems[ele.id] || 0,
-      isLiked: true
+      isLiked: true,
+      isAuthenticated: true
     }
   ));
   

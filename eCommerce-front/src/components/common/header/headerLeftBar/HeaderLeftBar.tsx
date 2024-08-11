@@ -10,8 +10,8 @@ const {leftBar} = styles;
 
 const HeaderLeftBar = () => {
   const cartTotalQuantity = useAppSelector(cartItemsQuantitySelector);
-  const wishlistTotalQuantity = useAppSelector(state => state.wishlist.itemsId.length);
-  console.log(wishlistTotalQuantity)
+  const wishlistTotalQuantity = useAppSelector(state => state.wishlist.itemsId.length)
+  
   return (
     <div className={leftBar}>
          

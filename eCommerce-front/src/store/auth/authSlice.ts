@@ -4,29 +4,22 @@ import actAuthRegister from "./act/actAuthRegister";
 import actAuthLogin from "./act/actAuthLogin";
 
 interface IAuthState {
-  loading: TLoading,
-  error: string| null,
-  accessToken: string,
   user: {
     firstName: string,
     lastName: string,
     email: string,
-    password: string,
     id: number
-  }
+  } | null,
+  loading: TLoading,
+  error: string| null,
+  accessToken: string | null
 }
 
 const initialState: IAuthState = {
   loading: "idle",
   error: null,
-  accessToken: "",
-  user: {
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    id: 0
-  }
+  accessToken: null,
+  user: null
 }
 
 const AuthSlice = createSlice({
@@ -38,14 +31,8 @@ const AuthSlice = createSlice({
       state.error= null
     },
     logOut: (state) => {
-      state.user = {
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        id: 0
-      },
-      state.accessToken = "";
+      state.user = null,
+      state.accessToken = null;
     }
   },
   extraReducers: (builder) => {
@@ -71,7 +58,7 @@ const AuthSlice = createSlice({
     builder.addCase(actAuthLogin.fulfilled, (state, action) => {
         state.loading= "fulfilled";
         state.accessToken = action.payload.accessToken;
-        state.user = action.payload.user
+        state.user = action.payload.user;
     }),
     builder.addCase(actAuthLogin.rejected, (state, action) => {
         state.loading= "rejected";

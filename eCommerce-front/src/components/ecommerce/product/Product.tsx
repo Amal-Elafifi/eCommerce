@@ -1,6 +1,8 @@
 import { memo, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
-import Spinner from "react-bootstrap/Spinner";
+import Modal from 'react-bootstrap/Modal';
+
+import Spinner from "react-bootstrap/Spinner";  
 import styles from "./style.module.css";
 
 import { TProduct } from "@types";
@@ -12,10 +14,11 @@ import Dislike from "@assets/svg/dislike.svg?react";
 
 const { product, productImg, maximumNotice, wishlist} = styles;
 
-const Product = memo(({ id, title, img, price, max, quantity, isLiked }: TProduct) => {
+const Product = memo(({ id, title, img, price, max, quantity, isLiked , isAuthenticated}: TProduct) => {
   const dispatch = useAppDispatch();
   const [isDisabled, setIsDisabled] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const remainingQuantity = max - (quantity ?? 0) ;
   const quantityReachedToMax = remainingQuantity === 0 ? true : false;
 
@@ -35,50 +38,71 @@ const Product = memo(({ id, title, img, price, max, quantity, isLiked }: TProduc
     setIsDisabled(true);
   };
 
+
   const likeToggleHandler = () => {
-    
-    if(!isLoading){
-      setIsLoading(true);
-      dispatch(actLikeToggle(id))
-      .unwrap()
-      .then(()=> setIsLoading(false))
-      .catch(()=>setIsLoading(false));
-
+   if(isAuthenticated) {      
+      if(!isLoading){
+        setIsLoading(true);
+        dispatch(actLikeToggle(id))
+        .unwrap()
+        .then(()=> setIsLoading(false))
+        .catch(()=>setIsLoading(false));
+      }
+    }else{
+      setShowModal(true)
     }
-
   }
 
   return (
-    <div className={product} onClick={ likeToggleHandler }>
-      <div className={wishlist}>
-        {isLoading?( <Spinner animation="border" variant="primary" size="sm"/>): isLiked? <Like/> : <Dislike/>}
+    <>
+      <Modal  show={showModal} onHide={() => setShowModal(false)} >
+        <Modal.Header closeButton>
+          <Modal.Title>Login Required</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <p>You need to login first to add this item to your wishist.</p>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>Close</Button>
+        </Modal.Footer>
+
+      </Modal>
+      <div className={product} onClick={likeToggleHandler}>
+
+          <div className={wishlist}>
+          {isLoading?( <Spinner animation="border" variant="primary" size="sm"/>): isLiked? <Like/> : <Dislike/>}
+        </div>
+
+        <div className={productImg}>
+          <img src={img} alt={title} />
+        </div>
+        <h2>{title} </h2>
+        <h3>{price.toFixed(2)}</h3>
+        <p className={maximumNotice}>
+          {quantityReachedToMax
+            ? "You reached the product limit"
+            : `you can add ${remainingQuantity} item(s)`}
+        </p>
+        <Button
+          variant="info"
+          style={{ color: "white" }}
+          onClick={addToCartHandler}
+          disabled={isDisabled || quantityReachedToMax}
+          >
+          {isDisabled ? (
+            <>
+              <Spinner animation="border" role="status" size="sm" />
+              Loading...
+            </>
+          ) : (
+            "Add to cart"
+          )}
+        </Button>
       </div>
-      <div className={productImg}>
-        <img src={img} alt={title} />
-      </div>
-      <h2>{title} </h2>
-      <h3>{price.toFixed(2)}</h3>
-      <p className={maximumNotice}>
-        {quantityReachedToMax
-          ? "You reached the product limit"
-          : `you can add ${remainingQuantity} item(s)`}
-      </p>
-      <Button
-        variant="info"
-        style={{ color: "white" }}
-        onClick={addToCartHandler}
-        disabled={isDisabled || quantityReachedToMax}
-      >
-        {isDisabled ? (
-          <>
-            <Spinner animation="border" role="status" size="sm" />
-            Loading...
-          </>
-        ) : (
-          "Add to cart"
-        )}
-      </Button>
-    </div>
+     
+    </>
   );
 });
 

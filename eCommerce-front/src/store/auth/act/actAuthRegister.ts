@@ -1,9 +1,13 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axiosErrorHandler from "@utils/axiosErrorHandler";
-import { TFormData } from "@types";
 
-
+type TFormData = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+};
 
 
 const actAuthRegister = createAsyncThunk("auth/actAuthRegister", async(formData: TFormData, thunk) => {

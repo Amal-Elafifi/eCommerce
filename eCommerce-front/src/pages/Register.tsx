@@ -1,73 +1,27 @@
-import { Navigate, useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector} from '@store/hooks';
-import { useForm, SubmitHandler } from "react-hook-form";
-import { zodResolver } from '@hookform/resolvers/zod';
+import { Navigate } from 'react-router-dom';
 import {Form, Button, Row, Col, Spinner} from 'react-bootstrap';
 import { Heading } from '@components/common';
-import { signUpScheme, signupType } from '@validations/SignupScheme';
 import { Input } from '@components/form/input';
-import useEmailAvailabilityChecking from '@hooks/useEmailAvailabilityChecking';
-import { actAuthRegister, resetUI } from '@store/auth/authSlice';
-import { useEffect } from 'react';
+import useRegister from '@hooks/useRegister';
 
 
 const Register = () => {
-  const navigate= useNavigate();
-  const dispatch = useAppDispatch();
-  const {loading, error, accessToken} = useAppSelector(state => state.auth)
-
-  const {register,
-    handleSubmit,
-    formState: {errors},
-    getFieldState,
-    trigger
-  } 
-  = useForm<signupType>(
-    {
-      resolver: zodResolver(signUpScheme),
-      mode: "onBlur"
-    }
-  );
-  const {emailAvailability,
-        enteredEmail,
-        checkingEmailAvailability,
-        resetEmailChecking} 
-        = useEmailAvailabilityChecking();
-
-  useEffect(()=>{
-    return() => {
-      dispatch(resetUI())
-    }
-  },[dispatch])
+  const {
+    accessToken,
+    loading,
+    error,
+    formErrors,
+    emailAvailability,
+    formSubmit,
+    emailOnBlurHandler,
+    register,
+    handleSubmit
+  } = useRegister();
 
   if(accessToken){
-    <Navigate to="/"/>
-  }     
-
-  const formSubmit: SubmitHandler<signupType> = (data) => {
-    const {firstName, lastName, email, password} = data;
-
-    dispatch(actAuthRegister({firstName, lastName, email, password})).unwrap()
-    .then(() => {
-      navigate("/login?message=successfully_created");    
-    })
-  };
-
- 
-
-  const emailOnBlurHandler= async(e: React.FocusEvent<HTMLInputElement>) => {
-    await trigger("email");
-    const value = e.target.value;
-    const{isDirty, invalid} = getFieldState("email");
-
-    if(isDirty && !invalid && enteredEmail !== value){
-      checkingEmailAvailability(value)
-    }
-    if(isDirty && invalid && enteredEmail){
-      resetEmailChecking(); 
-    }
-
+    <Navigate to="/" />
   }
+
   return (
     <>
     <Heading title="User Registeration"/>
@@ -79,19 +33,19 @@ const Register = () => {
               label="First Name" 
               name="firstName" 
               register={register} 
-              error={errors?.firstName?.message as string}
+              error={formErrors?.firstName?.message as string}
             />
             <Input 
               label="Last Name"
               name="lastName" 
               register={register} 
-              error={errors?.lastName?.message as string}
+              error={formErrors?.lastName?.message as string}
             />  
             <Input 
               label="Email" 
               name="email" 
               register={register}
-              error={errors?.email?.message? errors?.email?.message as string:
+              error={formErrors?.email?.message? formErrors?.email?.message as string:
                     emailAvailability === "notAvailable"? "Email is used": emailAvailability === "failed"? "Eroor from The server": ""}
               onBlur={emailOnBlurHandler}
               formText={ emailAvailability === "checking"? "Checking email availability ...please wait": ""}
@@ -103,14 +57,14 @@ const Register = () => {
               label="Password"
               name="password"
               register={register}
-              error={errors?.password?.message as string}
+              error={formErrors?.password?.message as string}
             />
             <Input 
               type="password"
               label="Confirm Password"
               name="confirmPassword" 
               register={register} 
-              error={errors?.confirmPassword?.message as string} 
+              error={formErrors?.confirmPassword?.message as string} 
               />
               {error && <p style={{color: "#DC3545", marginTop: "10px"}}>{error}</p>}
             <Button 

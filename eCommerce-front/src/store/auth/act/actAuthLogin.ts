@@ -1,13 +1,21 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {TFormData } from "@types";
 import axiosErrorHandler from "@utils/axiosErrorHandler";
 
+type TFormData = {
+  email: string;
+  password: string;
+};
 
-type TResponse ={
+type TResponse = {
+  user: {
+    id: number;
+    email: string;
+    firstName: string;
+    lastName: string;
+  };
   accessToken: string;
-  user: TFormData
-}
+};
 
 const actAuthLogin = createAsyncThunk("auth/actAuthLogin", async(formData: TFormData ,thunk)=>{
   const {rejectWithValue} = thunk;

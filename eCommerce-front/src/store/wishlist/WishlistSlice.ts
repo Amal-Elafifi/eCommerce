@@ -35,9 +35,11 @@ const WishlistSlice = createSlice({
     builder.addCase(actLikeToggle.fulfilled, (state, action)=>{
       if(action.payload.type === "add"){
          state.itemsId.push(action.payload.id);
-      }else{
+      }else if(action.payload.type === "remove"){
+
         state.itemsId = state.itemsId.filter(itemId => itemId !== action.payload.id)
         state.productsFullInfo = state.productsFullInfo.filter(item => item.id !== action.payload.id)
+
       }
     }) ;
     builder.addCase(actLikeToggle.rejected, (state, action)=>{
@@ -54,9 +56,9 @@ const WishlistSlice = createSlice({
       state.loading= "fulfilled";
       if(action.payload.dataType === "productsFullInfo"){
         state.productsFullInfo = action.payload.data as TProduct[];
-          
+
       }else if(action.payload.dataType === "productIds"){
-        state.itemsId = action.payload.data as number[]
+        state.itemsId= action.payload.data as number[];
       }
       state.error= null;
     });
@@ -80,3 +82,4 @@ const WishlistSlice = createSlice({
 export {actLikeToggle, actGetWishlist};
 export const {wishlistProductsFullInfoCleanUp} = WishlistSlice.actions;
 export default WishlistSlice.reducer;
+

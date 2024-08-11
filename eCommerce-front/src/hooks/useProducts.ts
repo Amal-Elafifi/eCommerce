@@ -12,12 +12,14 @@ const useProducts = () => {
   const { loading, records, error } = useAppSelector((state) => state.product);
   const cartItems = useAppSelector(state => state.Cart.items);
   const wishlistItemsId = useAppSelector(state=> state.wishlist.itemsId);
+  const userAccessToken = useAppSelector(state => state.auth.accessToken);
 
   const productFullInfo = records.map((ele) => (
     {
       ...ele,
       quantity: cartItems[ele.id] || 0,
       isLiked: wishlistItemsId.includes(ele.id), 
+      isAuthenticated: userAccessToken? true: false
     }
   ));
 
