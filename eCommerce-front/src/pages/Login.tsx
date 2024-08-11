@@ -1,50 +1,24 @@
-import { useEffect } from 'react';
-import { useSearchParams, useNavigate, Navigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '@store/hooks';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import toast, {Toaster} from "react-hot-toast";
+import { Navigate } from 'react-router-dom';
+import {Toaster} from "react-hot-toast";
 import {Form, Button, Row, Col, Spinner} from 'react-bootstrap';
 import { Heading } from '@components/common';
 import { Input } from '@components/form/input';
-import { signinScheme, signinType } from '@validations/SigninScheme';
-import { actAuthLogin, resetUI } from '@store/auth/authSlice';
+import useLogin from "@hooks/useLogin";
 
-const Login = () => {
-  const dispatch = useAppDispatch();
-  const navigate= useNavigate();
-  const{loading, error, accessToken} = useAppSelector(state=> state.auth);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const {register, handleSubmit, formState: {errors}} = useForm<signinType>({
-      resolver: zodResolver(signinScheme),
-      mode: "onBlur"
-  });
-
-  const message = searchParams.get("message")
-  useEffect(()=>{
-    if( message === "successfully_created"){
-      toast.success("Your account successfully created. please login")}
-      if(message === "login_alert"){
-        toast.error("You need to login to see this content")
-      }
-      setSearchParams("")
-    
-    return () => {
-      dispatch(resetUI())
-    }
-  },[message, setSearchParams, dispatch])
-
-  const formSubmit: SubmitHandler<signinType> = (data) => {
-    dispatch(actAuthLogin(data)).unwrap().then(()=>{
-      navigate("/")
-    })
-  }
+const Login = () => { 
+ const {
+  accessToken,
+  loading,
+  error,
+  formErrors,
+  formSubmit,
+  register,
+  handleSubmit, 
+} = useLogin();
 
   if(accessToken){
-    <Navigate to="/"/>
+    <Navigate to="/" />
   }
- 
-
 
   return (
     <>
@@ -56,7 +30,7 @@ const Login = () => {
             <Input 
               label="Email address"
               name="email" 
-              error={errors?.email?.message as string}
+              error={formErrors?.email?.message as string}
               register={register}
             />       
             <Input 
@@ -64,7 +38,7 @@ const Login = () => {
               label="Password"
               name="password" 
               register={register} 
-              error={errors?.password?.message as string}
+              error={formErrors?.password?.message as string}
             /> 
             {error && <p style={{color: "#DC3545", marginTop: "10px"}}>{error}</p>}
 
