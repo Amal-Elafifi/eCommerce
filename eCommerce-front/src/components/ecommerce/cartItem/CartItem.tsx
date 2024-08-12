@@ -2,9 +2,10 @@ import { memo } from "react";
 import { Form, Button } from "react-bootstrap";
 import styles from "./style.module.css" 
 import { TProduct } from "@types";
+import ProductInfo from "../productInfo/ProductInfo";
 
 
-const { cartItem, product, productImg, productInfo, cartItemSelection } =
+const { cartItem, cartItemSelection } =
   styles;
 
 type CartItemProps= TProduct & {
@@ -32,16 +33,7 @@ const CartItem = memo(({id, title, price, img, max, quantity, changeQuantityHand
 
   return (
     <div className={cartItem}>
-      <div className={product}>
-        <div className={productImg}>
-          <img
-            src={img}
-            alt={title}
-          />
-        </div>
-        <div className={productInfo}>
-          <h2>{title}</h2>
-          <h3>{price.toFixed(2)}</h3>
+        <ProductInfo title={title} price={price} img={img} direction="column">
           <Button
             variant="secondary"
             style={{ color: "white", width: "100px" }}
@@ -50,8 +42,7 @@ const CartItem = memo(({id, title, price, img, max, quantity, changeQuantityHand
           >
             Remove
           </Button>
-        </div>
-      </div>
+        </ProductInfo>
 
       <div className={cartItemSelection}>
         <span className="d-block mb-1">Quantity</span>
