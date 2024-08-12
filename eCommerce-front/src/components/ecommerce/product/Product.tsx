@@ -11,8 +11,9 @@ import { addToCart } from "@store/cart/CartSlice";
 import { actLikeToggle } from "@store/wishlist/WishlistSlice";
 import Like from "@assets/svg/like.svg?react";
 import Dislike from "@assets/svg/dislike.svg?react";
+import ProductInfo from "../productInfo/ProductInfo";
 
-const { product, productImg, maximumNotice, wishlist} = styles;
+const {maximumNotice, wishlist} = styles;
 
 const Product = memo(({ id, title, img, price, max, quantity, isLiked , isAuthenticated}: TProduct) => {
   const dispatch = useAppDispatch();
@@ -69,17 +70,17 @@ const Product = memo(({ id, title, img, price, max, quantity, isLiked , isAuthen
         </Modal.Footer>
 
       </Modal>
-      <div className={product} onClick={likeToggleHandler}>
+      <ProductInfo 
+        title={title}
+        price={price}
+        direction="row"
+        img={img} 
+      >
 
-          <div className={wishlist}>
+          <div className={wishlist} onClick={likeToggleHandler}>
           {isLoading?( <Spinner animation="border" variant="primary" size="sm"/>): isLiked? <Like/> : <Dislike/>}
         </div>
 
-        <div className={productImg}>
-          <img src={img} alt={title} />
-        </div>
-        <h2>{title} </h2>
-        <h3>{price.toFixed(2)}</h3>
         <p className={maximumNotice}>
           {quantityReachedToMax
             ? "You reached the product limit"
@@ -87,7 +88,7 @@ const Product = memo(({ id, title, img, price, max, quantity, isLiked , isAuthen
         </p>
         <Button
           variant="info"
-          style={{ color: "white" }}
+          style={{ color: "white", width: "100%" }}
           onClick={addToCartHandler}
           disabled={isDisabled || quantityReachedToMax}
           >
@@ -100,7 +101,7 @@ const Product = memo(({ id, title, img, price, max, quantity, isLiked , isAuthen
             "Add to cart"
           )}
         </Button>
-      </div>
+      </ProductInfo>
      
     </>
   );
