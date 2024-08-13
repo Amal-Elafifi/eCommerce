@@ -15,6 +15,7 @@ import categories from "./categories/categoriesSlice";
 import product from "./products/productsSlice";
 import Cart from "./cart/CartSlice";
 import auth from "./auth/authSlice";
+import orders from "./orders/PlaceOrderSlice";
 
 
 const rootPersistConfig = {
@@ -40,6 +41,7 @@ const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, auth),
   categories,
   product,
+  orders,
   Cart: persistReducer(cartPersistConfig, Cart),
   wishlist: wishlist
 });

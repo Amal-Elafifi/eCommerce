@@ -5,16 +5,20 @@ import {
   cartItemsChangeQuantity,
   cartItemRemove,
   cartCleanUp } from "@store/cart/CartSlice.ts";
+import { resetOrderStatus } from "@store/orders/PlaceOrderSlice";
 
 
 const useCart = () => {
   const dispatch = useAppDispatch();
   const {items, loading, error, productsFullInfo} = useAppSelector(state=> state.Cart);
+  const userAccessToken= useAppSelector(state=> state.auth.accessToken);
+  const placingOrderStatus = useAppSelector(state => state.orders.loading)
 
   useEffect(() => {
     const promise = dispatch(actGetProductsByItems());
     return () => {
       dispatch(cartCleanUp());
+      dispatch(resetOrderStatus());
       promise.abort();
     }
   }, [dispatch])
@@ -33,7 +37,15 @@ const useCart = () => {
     dispatch(cartItemRemove(id))
   }, [dispatch])
 
-  return {loading, error, products, changeQuantityHandler, removeItemHandler}
+  return {
+    loading,
+    error,
+    products,
+    userAccessToken,
+    placingOrderStatus,
+    changeQuantityHandler,
+    removeItemHandler
+  }
 }
 
 export default useCart;
