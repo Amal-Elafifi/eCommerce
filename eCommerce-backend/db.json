@@ -6,6 +6,20 @@
       "firstName": "hoda",
       "lastName": "Elafifi",
       "id": 1
+    },
+    {
+      "email": "molyhamzakoko45@gmail.com",
+      "password": "$2a$10$GsjG275Gx9OaA4QB7SjNPuFTqrYaI26LDdRfTtXCDaF.fXN7PAk3i",
+      "firstName": "amal",
+      "lastName": "Elafifi",
+      "id": 2
+    },
+    {
+      "email": "z@gmail.com",
+      "password": "$2a$10$4srrphs9Xv3RFfS4vJNXWeRWllnH0JS/mwPri5X/UvP./vMj86gQ.",
+      "firstName": "hamza",
+      "lastName": "elsheikh",
+      "id": 3
     }
   ],
   "categories": [
@@ -113,8 +127,98 @@
   ],
   "wishlist": [
     {
-      "userId": "1",
+      "userId": 1,
+      "productId": 6,
+      "id": 4
+    },
+    {
+      "userId": 1,
+      "productId": 17,
+      "id": 5
+    },
+    {
+      "userId": 2,
+      "productId": 1,
+      "id": 7
+    },
+    {
+      "productId": 1,
+      "id": 8
+    },
+    {
+      "productId": 1,
+      "id": 9
+    },
+    {
+      "productId": 1,
+      "id": 10
+    },
+    {
+      "productId": 1,
+      "id": 11
+    },
+    {
+      "productId": 1,
+      "id": 12
+    },
+    {
+      "productId": 1,
+      "id": 13
+    },
+    {
+      "productId": 1,
+      "id": 14
+    },
+    {
+      "productId": 1,
+      "id": 15
+    },
+    {
+      "productId": 1,
+      "id": 16
+    },
+    {
+      "productId": 1,
+      "id": 17
+    },
+    {
+      "productId": 1,
+      "id": 18
+    },
+    {
+      "userId": 2,
+      "productId": 5,
+      "id": 19
+    },
+    {
+      "userId": 2,
+      "productId": 4,
+      "id": 20
+    },
+    {
+      "userId": 3,
       "productId": 2,
+      "id": 21
+    },
+    {
+      "userId": 3,
+      "productId": 6,
+      "id": 22
+    }
+  ],
+  "orders": [
+    {
+      "userId": 2,
+      "items": [
+        {
+          "userId": 5,
+          "title": "Sweatshirt shorts",
+          "price": 300,
+          "img": "https://eg.hm.com/assets/styles/HNM/12652575/3e316aab8ce1b596545d144d0efd362975b3856f/2/image-thumb__1998684__product_listing/48756e509aa05341e4a618ba4c1b0a5ce24ebcae.jpg",
+          "quantity": 2
+        }
+      ],
+      "subtotal": 600,
       "id": 1
     }
   ]

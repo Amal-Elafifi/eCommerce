@@ -41,6 +41,10 @@ const CartSlice = createSlice({
     },
     cartCleanUp: (state) => {
       state.productsFullInfo = [];
+    },
+    clearCartAfterPlacingOrder: (state) => {
+      state.items ={};
+      state.productsFullInfo= []
     }
     
   },
@@ -51,7 +55,7 @@ const CartSlice = createSlice({
     });
     builder.addCase(actGetProductsByItems.fulfilled, (state, action) => {
       state.loading = "fulfilled",
-      state.productsFullInfo = action.payload ,
+      state.productsFullInfo = action.payload as TProduct[] ,
       state.error = null
     });
     builder.addCase(actGetProductsByItems.rejected, (state, action) => {
@@ -64,5 +68,12 @@ const CartSlice = createSlice({
 })
 
 export {actGetProductsByItems, cartItemsQuantitySelector};
-export const {addToCart, cartItemsChangeQuantity,  cartItemRemove, cartCleanUp} = CartSlice.actions
+export const {
+  addToCart,
+  cartItemsChangeQuantity,
+  cartItemRemove,
+  clearCartAfterPlacingOrder,
+  cartCleanUp
+} = CartSlice.actions
+  
 export default CartSlice.reducer;
