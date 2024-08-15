@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { isString, TLoading, TOrderItems } from "@types";
 import actPlaceOrder from "./act/actPlaceOrder";
+import actGetOrder from "./act/actGetOrder";
 
 interface IOrderSlice {
   orderList: TOrderItems[],
@@ -21,6 +22,7 @@ const PlaceOrderSlice = createSlice({
   reducers:{
     resetOrderStatus: (state) => {
       state.loading = "idle";
+      state.error= null;
     }
   },
   extraReducers: (builder) => {
@@ -37,11 +39,26 @@ const PlaceOrderSlice = createSlice({
       if(isString(action.payload)){
         state.error = action.payload;
       }
+    }),
+    // get order
+    builder.addCase(actGetOrder.pending, (state) => {
+      state.loading="pending";
+      state.error= null;
+    }),
+    builder.addCase(actGetOrder.fulfilled, (state, action) => {
+      state.loading= "fulfilled";
+      state.orderList= action.payload ;
+    }),
+    builder.addCase(actGetOrder.rejected, (state, action) => {
+      state.loading="rejected";
+      if(isString(action.payload)){
+        state.error = action.payload;
+      }
     })
   
   }
 })
 
 export const {resetOrderStatus} = PlaceOrderSlice.actions;
-export {actPlaceOrder};
+export {actPlaceOrder, actGetOrder};
 export default PlaceOrderSlice.reducer;

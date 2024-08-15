@@ -6,6 +6,9 @@ import CartItem from "@components/ecommerce/cartItem/CartItem";
 import CartSubtotalPrice from "@components/ecommerce/cartSubtotalPrice/CartSubtotalPrice";
 import CartItemList from "@components/ecommerce/cartItemList/CartItemList";
 import LottieHandler from "@components/feedback/lottiefileshandler/LottieHandler";
+import ProductInfo from "@components/ecommerce/productInfo/ProductInfo";
+
+
 
 
 
@@ -17,5 +20,6 @@ export {
     CartItem,
     CartSubtotalPrice,
     CartItemList,
-    LottieHandler
+    LottieHandler,
+    ProductInfo
 };

@@ -1,8 +1,10 @@
 import  {Suspense, lazy}  from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-// pages
+// layouts
 const MainLayout = lazy(() => import('@layouts/mainLayout/MainLayout'));
+const ProfileLayout = lazy(() => import('@layouts/profileLayout/ProfileLayout'));
+// pages
 const Home = lazy(() => import('@pages/Home'));
 const Wishlist = lazy(() => import('@pages/Wishlist'));
 const Cart = lazy(() => import('@pages/Cart'));
@@ -11,7 +13,9 @@ const Products = lazy(() => import( '@pages/Products'));
 const AboutUs = lazy(() => import('@pages/AboutUs'));
 const Login = lazy(() => import('@pages/Login'));
 const Register = lazy(() => import('@pages/Register'));
-const Profile = lazy(() => import('@pages/Profile'));
+const Account = lazy(() => import('@pages/Account'));
+const Orders = lazy(() => import('@pages/Orders'));
+// error
  import Error from '@pages/Error';
 //  components
 import {PageSuspenseFallback} from "@components/feedback/index";
@@ -110,9 +114,27 @@ const router =createBrowserRouter([
               element:
               <ProtectedRoute>
                 <PageSuspenseFallback>
-                  <Profile/>,
+                  <ProfileLayout/>,
                 </PageSuspenseFallback>
-              </ProtectedRoute>
+              </ProtectedRoute>,
+
+              children: [
+                {
+                  index: true,
+                  element: 
+                    <PageSuspenseFallback>
+                        <Account/>
+                    </PageSuspenseFallback>
+                },
+                {
+                  index: true,
+                  path:"orders",
+                  element: 
+                    <PageSuspenseFallback>
+                        <Orders/>
+                    </PageSuspenseFallback>
+                }
+            ]
             }
 
         ]

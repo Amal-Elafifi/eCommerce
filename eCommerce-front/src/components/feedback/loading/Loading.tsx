@@ -3,13 +3,15 @@ import CategoriesSkeleton from "../skeletons/categoriesSkeleton/CategoriesSkelet
 import ProductSkeleton  from "../skeletons/productSkeleton/ProductSkeleton";
 import CartSkeleton from "../skeletons/cartSkeleton/CartSkeleton";
 import WishlistSkeleton from "../skeletons/wishlistSkeleton/WishlistSkeleton";
+import TableSkeleton from "../skeletons/tableSkeleton/TableSkeleton";
 import LottieHandler from "../lottiefileshandler/LottieHandler";
 
 const skeletonsTypes = {
   category: CategoriesSkeleton,
   product: ProductSkeleton,
   cart: CartSkeleton,
-  wishlist: WishlistSkeleton
+  wishlist: WishlistSkeleton,
+  orders: TableSkeleton
   }
   
   type LoadingProps = {
