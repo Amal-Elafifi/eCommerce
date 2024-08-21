@@ -10,6 +10,8 @@ import ProductInfo from "@components/ecommerce/productInfo/ProductInfo";
 import Landing from "@components/ecommerce/home/landing/Landing";
 import About from "@components/ecommerce/home/about/About";
 import NewArrivalSection from "@components/ecommerce/home/newArrival/NewArrivalSection";
+import Sale from "@components/ecommerce/home/sale/Sale";
+import JoinApp from "@components/ecommerce/home/joinapp/JoinApp";
 import about1 from "@assets/images/about1.jpg";
 import about2 from "@assets/images/about2.jpg";
 import aboutCard1 from "@assets/images/aboutCard1.jpg";
@@ -35,6 +37,8 @@ export {
     Landing,
     About,
     NewArrivalSection,
+    Sale,
+    JoinApp,
     about1,
     about2,
     aboutCard1,

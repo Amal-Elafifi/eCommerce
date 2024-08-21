@@ -1,0 +1,21 @@
+.salesContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 40px;
+}
+.salesHeading {
+  font-size: 48px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+  color:  rgb(11, 85, 114);
+  text-align: center;
+  padding: 20px 0;
+  text-transform: uppercase;
+}
+.imgsec {
+  width: 100%;
+  height: 500px;
+  border-radius: 20px;
+}

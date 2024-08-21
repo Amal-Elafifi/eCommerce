@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-import {Landing, About, NewArrivalSection} from "./index";
+import {Landing, About, NewArrivalSection, Sale, JoinApp} from "./index";
 
 const Home = () => {
     return (
@@ -7,6 +7,8 @@ const Home = () => {
             <Landing/>
             <About/>
             <NewArrivalSection/>
+            <Sale/>
+            <JoinApp/>
         </Container>
     )
 }

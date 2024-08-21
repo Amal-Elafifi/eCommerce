@@ -1,0 +1,64 @@
+.joinAppWrapper {
+  padding-top: 30px;
+}
+.joinAppHeading {
+  font-size: 48px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+  color:  rgb(11, 85, 114);
+  text-align: center;
+  padding: 40px 0;
+  text-transform: uppercase;
+}
+.appImg {
+  width: 550px;
+  cursor: pointer;
+}
+.iconCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.joinsubHeading {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: -1px;
+  font-family: 'Franklin Gothic Medium';
+  line-height: 1.5;
+}
+.jointext {
+  color: #807e7e;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  padding: 20px 0;
+}
+.iconsStyle {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 30px;
+}
+.iconWrapper {
+  width: 200px;
+  cursor: pointer;
+}
+.iconWrapper img {
+  max-width: 100%;
+  
+}
+
+
+@media screen and (max-width: 991px) {
+  .appImg {
+    width: 400px;
+    margin-top: 30px;
+  }
+  .iconWrapper{
+    width: 150px;
+  }
+  .jointext {
+    margin-bottom: -20px;
+  }
+}
