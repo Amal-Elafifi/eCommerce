@@ -30,7 +30,7 @@
       "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/utils/*"],
       "@utils": ["src/utils/index"],
-      "@validations/*": ["src/validations/*"]
+      "@validations/*": ["src/validations/*"],
     },
     /* Linting */
     "strict": true,

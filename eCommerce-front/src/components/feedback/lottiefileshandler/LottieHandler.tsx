@@ -6,6 +6,7 @@ import networkError from "@assets/lootiefiles/networkError.json";
 import wishlist from "@assets/lootiefiles/wishlist.json";
 import mainloader from "@assets/lootiefiles/mainloader.json";
 import success from "@assets/lootiefiles/success.json";
+import laplanding from "@assets/lootiefiles/laplanding.json"
 
 
 const lottietypesMap = {
@@ -15,7 +16,8 @@ const lottietypesMap = {
   networkError,
   wishlist,
   mainloader,
-  success
+  success,
+  laplanding
 }
 
 type LottieHandlerProps = {

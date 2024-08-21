@@ -1,0 +1,60 @@
+/* landing */
+.landingRow {
+  background-color: rgb(13 202 240 / 15%);
+  border-radius: 10px;
+  max-height: 470px;  
+}
+.landingHeading{
+  margin-top: 8%;
+  list-style: none;
+  padding: 5% 15%;
+  font-size: 52px;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-transform: uppercase;
+  color: #ff067a;
+  font-style: italic;
+  cursor: pointer;
+}
+.headinglistone,
+.headingsecondlist,
+.headingthirdlist,
+.headinglastlist {
+  padding: 0px 15px;
+  width: 230px;
+  border-radius: 10px;
+  transition: all;
+  margin-top: 7px;
+}
+.headinglistone {
+  background-color: #fff;
+}
+.headinglistone:hover,
+.headingthirdlist:hover,
+.headingsecondlist:hover,
+.headinglastlist:hover {
+  width: 300px;
+  font-size: 55px;
+}
+.headingthirdlist {
+  background-color: #3a043a;
+}
+.headingsecondlist {
+  background-color: #ffee00;
+}
+.headinglastlist {
+  background-color: #53ff53;
+}
+.lottie {
+  width: 500px;
+}
+@media only screen and (max-width: 768px) {
+  .landingHeading {
+    display: none;
+  };
+  .lottie{
+    width: 300px;
+  }
+}
+
+
