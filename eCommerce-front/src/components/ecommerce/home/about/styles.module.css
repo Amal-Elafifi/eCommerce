@@ -1,0 +1,174 @@
+/* about section */
+.aboutHeading {
+  font-size: 48px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+  color:  rgb(11, 85, 114);
+  text-align: center;
+  padding: 40px 0;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.aboutText {
+  font-size: 20px;
+  letter-spacing: -1px;
+  color: #9e9c9c;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+
+
+/* about page */
+
+/* the story */
+.storyWrapper {
+  max-height: 520px;
+  font-family: Roboto;
+  display: flex;
+}
+.storyImg,
+.ownerImg {
+  width: 400px;
+  height: 90%;
+  border-radius: 10px;
+
+}
+.storyHeading,
+.ownerHeading {
+  font-weight: bold;
+  font-size: 40px;
+  letter-spacing: -2px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: poppins;
+}
+.storyContent,
+.storyFooter {
+  font-size: 16px;
+  color: #888686;
+  text-align: left;
+  margin-top: 20px;
+}
+.storyFooter {
+  font-size: 14px;
+  margin-top: -5px;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+  color: rgb(63, 58, 58);
+}
+.companyName, 
+.companyOwner {
+  font-size: 20px;
+  color: rgb(23, 160, 153);
+  font-weight: bold;
+  
+}
+
+/* About the owner */
+.ownerHeading {
+  padding: 80px 0 30px;
+  margin-top: 20px;
+}
+.aboutOwner {
+  width: 90%;
+  color: #918e8e;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -1px;
+  line-height: 2;
+  
+}
+/* What we offer */
+.offerHeading {
+  padding: 20px 0 40px;
+  text-align: center;
+  font-size: 48px;
+}
+.cardTitle {
+  letter-spacing: -1px;
+}
+.cardText {
+  color: #918e8e;
+  font-weight: 500;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+
+/* media queries */
+@media screen and (max-width: 768px){
+  .offerHeading {
+    padding: 0 0 10px;
+    font-size: 30px;
+    margin-top: -30px;
+  }
+  .storyHeading,
+  .ownerHeading {
+    font-size: 20px;
+  }
+  .storyImg {
+    display: none;
+  }
+  .storyContent, 
+  .storyFooter {
+    font-size: 10px;
+    line-height: 1.2;
+  }
+  .companyName,
+  .companyOwner {
+    font-size: 12px;
+  }
+  .ownerHeading {
+    padding: 20px 0 30px;
+  }
+  .aboutOwner {
+    font-size: 12px;
+    line-height: 1.4;    
+  }
+  .storyFooter{
+    align-items: center;
+  }
+ 
+}
+@media screen and (max-width: 991px){
+  .storyHeading,
+  .ownerHeading {
+    font-size: 30px;
+    padding-top: 0;
+  }
+  .storyImg {
+    width: 350px;
+    height: 80%;
+  }
+  .storyContent{
+    font-size: 12px;
+    line-height: 1.2;
+  }
+  .companyName,
+  .companyOwner {
+    font-size: 14px;
+  }
+  .ownerWrapper {
+    padding: 60px 0 10px;
+  }
+  .cardsWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* .ownerHeading {
+  } */
+  .aboutOwner {
+    font-size: 14px;
+    line-height: 1.2;
+    
+  }
+  
+}
+@media (min-width: 991px) and (max-width: 1200px) {
+  .ownerHeading {
+    padding-top: 15%;
+  }
+}
