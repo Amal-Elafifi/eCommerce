@@ -43,7 +43,8 @@
   color: rgba(255, 255, 255, 0.925);
 }
 .contact,
-.footerList{
+.footerList,
+.footerCopyWright{
   color: rgba(255, 255, 255, 0.61);
 }
 .contact p:not(:first-of-type) {
@@ -79,4 +80,17 @@
 }
 .footerList li:not(:last-of-type) {
   margin-bottom: 5px;
+}
+.nameandtext {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.footerCopyWright {
+  text-align: center;
+}
+
+.footSlogan {
+  color: cyan
 }
