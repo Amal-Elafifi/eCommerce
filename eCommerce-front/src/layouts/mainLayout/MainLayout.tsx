@@ -9,16 +9,17 @@ const {container, wrapper} = styles;
 const MainLayout = () => {
 
   return (
-    <Container className={container}>
+    <>
+      <Container className={container}>
         <Header/>
 
         <div className={wrapper}>
           <Outlet/>
         </div>
-
         
+      </Container>
         <Footer/>
-    </Container>
+    </>
   )
 }
 

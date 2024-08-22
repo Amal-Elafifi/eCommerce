@@ -1,6 +1,82 @@
-.footerContainer {
-  margin-top: auto;
-  text-align: center;
-  padding: 10px 0;
-  background-color: "#f7f7fa";
+.footerWrapper {
+  background-color: black;
+  padding: 40px 30px;
+}
+
+/* first footer column */
+.ecomHeading {
+  padding: 0 0px 20px;
+}
+.ecomHeading img {
+  border: 5px solid white;
+  border-radius: 60%;
+  height: 90px;
+  width: 160px;
+}
+.inputStyle {
+  border-color: white;
+  border-radius: 0;
+  border-style: none none solid;
+  background-color: black;
+  margin-bottom: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.inputStyle,
+.inputStyle::placeholder,
+.inputStyle:focus{
+  color: rgba(255, 255, 255, 0.849);
+  font-size: 18px;
+}
+.inputStyle:focus {
+  background-color: black;
+}
+.eComtext {
+  color: rgba(255, 255, 255, 0.452);
+  padding-top: 30px;
+}
+
+/* second footer column */
+.mobHeading {
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-bottom: 15px;
+  color: rgba(255, 255, 255, 0.925);
+}
+.contact,
+.footerList{
+  color: rgba(255, 255, 255, 0.61);
+}
+.contact p:not(:first-of-type) {
+  margin-top: -10px;
+}
+.footerIcons {
+  display: flex; 
+  flex-wrap: wrap;
+  padding-top: 10px;
+}
+.socialIcon {
+  margin-right: 5px;
+  cursor: pointer;
+}
+.socialIcon img {
+  width: 32px;
+  height: 32px;
+}
+
+/* third columd */
+.linksWrapper  {
+  display: flex;
+  flex-direction: column;
+  text-transform: capitalize;
+}
+
+/* forth column */
+.footerList{
+  list-style: none;
+  text-transform: capitalize;
+  margin-left: -30px;
+  cursor: pointer;
+}
+.footerList li:not(:last-of-type) {
+  margin-bottom: 5px;
 }
