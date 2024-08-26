@@ -2,24 +2,31 @@
 
 simple and restfull way to purchase.
 
-##teechnologies stack
--react
--vite
--typescript
+##Technologies stack
+
+.react
+
+.vite
+
+.typescript
 
 
 ##Live Demonstraion
 
 Here are some screenshots that show the eCommerce website application in use
+
 ### homepage
+
 ![demo1](https://github.com/user-attachments/assets/d56e4ee2-7874-4f5b-9163-cdf75916fca8)
 
 ![demo2](https://github.com/user-attachments/assets/08d9211b-cd7b-4023-9b6a-3865e58ca67c)
 
 ### categories page
+
 ![cat](https://github.com/user-attachments/assets/396f26e6-39ec-4667-b504-a4ea2eeb002b)
 
 ####mens section in categories
+
 ![cat2](https://github.com/user-attachments/assets/c89040f3-b187-402f-adfc-7caf53a357b6)
 
 ### wishlist page
