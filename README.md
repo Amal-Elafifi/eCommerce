@@ -1,14 +1,14 @@
-#eCommerce Website
+# eCommerce Website
 
 simple and restfull way to purchase.
 
-##Technologies stack
+## Technologies stack
 
-.react
+- react
 
-.vite
+- vite
 
-.typescript
+- typescript
 
 
 ##Live Demonstraion
@@ -25,7 +25,7 @@ Here are some screenshots that show the eCommerce website application in use
 
 ![cat](https://github.com/user-attachments/assets/396f26e6-39ec-4667-b504-a4ea2eeb002b)
 
-####mens section in categories
+#### Mens section in categories
 
 ![cat2](https://github.com/user-attachments/assets/c89040f3-b187-402f-adfc-7caf53a357b6)
 
@@ -38,4 +38,5 @@ Here are some screenshots that show the eCommerce website application in use
 ![cart](https://github.com/user-attachments/assets/bedde16b-87e5-4664-8487-f40878c91fe7)
 
 ###register page
+
 ![register](https://github.com/user-attachments/assets/6f6a9912-2c7f-4b28-a9da-b0931e1e92b2)
