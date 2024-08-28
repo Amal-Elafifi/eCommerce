@@ -17,10 +17,10 @@ amazing material and suitable price.
   - Home
   - About
   - Categories
-      -- Men
-      -- Women
-      -- Kids
-      -- Sports
+      - Men
+      - Women
+      - Kids
+      - Sports
   - Cart
   - Wishlist
   - Register
