@@ -1,6 +1,8 @@
 # eCommerce Website
 
-simple and restfull way to purchase.
+simple and restfull way to purchase 
+any kit you want with best quality,
+amazing material and suitable price.
 
 ## Technologies stack
 
@@ -10,6 +12,31 @@ simple and restfull way to purchase.
 
 - typescript
 
+  ## Sections
+
+  - Home
+  - About
+  - Categories
+      -- Men
+      -- Women
+      -- Kids
+      -- Sports
+  - Cart
+  - Wishlist
+  - Register
+ 
+  ## How to run
+  
+  ### From the commandline run
+    - npm i
+  
+  ### Firstly for backend server 
+    - npm run server
+    - npm start
+
+  ### for frontEnd server
+  - npm run dev
+  
 
 ##Live Demonstraion
 
