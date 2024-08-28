@@ -38,7 +38,7 @@ amazing material and suitable price.
   - npm run dev
   
 
-##Live Demonstraion
+## Live Demonstraion
 
 Here are some screenshots that show the eCommerce website application in use
 
