@@ -1,0 +1,8 @@
+
+.leftBar {
+  display: flex;
+  flex-direction: row;
+}
+.leftBar > div:first-of-type {
+  border-right: 1px solid black;
+}
