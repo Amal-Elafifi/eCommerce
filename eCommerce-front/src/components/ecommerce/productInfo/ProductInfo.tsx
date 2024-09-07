@@ -22,6 +22,7 @@ const ProductInfo = ({
   style,
   children
   }: ProductInfoProps) => {
+    console.log(quantity)
   return(
     <div className={`${styles[`product-${direction}`]}`} style={style}>
         <div className={`${styles[`productImg-${direction}`]}`}>
