@@ -14,6 +14,7 @@ const Orders = () => {
     handleShowProductDetails,
     handleCloseModal
   } = useOrders();
+
   return (
     <>
       <Modal show={showModal} onHide={handleCloseModal}>
@@ -43,7 +44,7 @@ const Orders = () => {
             </tr>
           </thead>
           <tbody>
-            {orderList?.map(el=>(
+            {orderList.length?orderList.map(el=>(
                 <tr key={el.id}>
                     <td>#{el.id}</td>
                     <td>{el.items.length} {"item(s)  "}   
@@ -54,7 +55,8 @@ const Orders = () => {
                     <td>{el.subtotal.toFixed(2)}</td>
                 </tr>
               )
-            )}
+            ): ""
+          }
           </tbody>
         </Table>
       </Loading>

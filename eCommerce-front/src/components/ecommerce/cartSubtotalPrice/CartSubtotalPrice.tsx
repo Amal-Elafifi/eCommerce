@@ -30,6 +30,8 @@ const CartSubtotalPrice = ({products}: CartSubtotalProps, userAccessToken: CartS
 
   }, 0)
 
+  console.log(subtotal);
+
   const handleModal = () => {
     setShowModal(!showModal);
     setError(null)
