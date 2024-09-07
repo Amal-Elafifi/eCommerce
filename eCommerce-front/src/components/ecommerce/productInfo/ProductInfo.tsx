@@ -51,7 +51,7 @@ const ProductInfo = ({
                 <span style={{fontWeight: "bold"}}>
                   Total Price:
                 </span>
-                {(quantity * price).toFixed(2)} EGP
+                {(quantity? (quantity * price).toFixed(2): "")} EGP
              </h3>}
           {children}
         </div>

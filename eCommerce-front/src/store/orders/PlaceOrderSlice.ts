@@ -47,7 +47,7 @@ const PlaceOrderSlice = createSlice({
     }),
     builder.addCase(actGetOrder.fulfilled, (state, action) => {
       state.loading= "fulfilled";
-      state.orderList= action.payload ;
+      state.orderList.push(action.payload) ;
     }),
     builder.addCase(actGetOrder.rejected, (state, action) => {
       state.loading="rejected";
