@@ -22,6 +22,7 @@ const ProductInfo = ({
   style,
   children
   }: ProductInfoProps) => {
+    console.log(quantity)
   return(
     <div className={`${styles[`product-${direction}`]}`} style={style}>
         <div className={`${styles[`productImg-${direction}`]}`}>
@@ -50,7 +51,7 @@ const ProductInfo = ({
                 <span style={{fontWeight: "bold"}}>
                   Total Price:
                 </span>
-                {(quantity * price).toFixed(2)} EGP
+                {(quantity? (quantity * price).toFixed(2): "")} EGP
              </h3>}
           {children}
         </div>

@@ -2,8 +2,9 @@
   "name": "ecommerce-backend",
   "description": "",
   "main": "index.js",
+
   "scripts": {
-    "start": "json-server-auth db.json --watch --port 5005 "
+    "start": "json-server-auth db.json --watch --port 5005 ",
   },
   "author": "",
   "license": "ISC",

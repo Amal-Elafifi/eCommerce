@@ -119,7 +119,7 @@ const AboutUs = () => {
                     </Card>
                 </Col>
             </Row>
-            <Row>
+            <Row style={{paddingBottom: "30px"}}>
                 <h2 className={offerHeading} style={{marginTop: "10px"}}>FAQ</h2>
                 <Accordion defaultActiveKey="0">
                 <Accordion.Item eventKey="0">

@@ -23,7 +23,10 @@ const {
   mobHeading,
   contact,
   linksWrapper,
-  footerList
+  footerList,
+  nameandtext,
+  footerCopyWright,
+  footSlogan
 } = styles;
 
 const Footer = () => {
@@ -101,6 +104,15 @@ const Footer = () => {
                 </div>
             </Col>
           </Row>
+          <div className={nameandtext}>
+            <div className={footerCopyWright}>
+              <span className={footSlogan}>©</span>
+              2024
+              <span className={footSlogan}>Our eCom</span>
+              . All rights reserved.
+            </div>
+            <h5 className={footSlogan}>Amal Elafifi</h5>
+          </div>
         </Container>
     </div>
   )
@@ -109,6 +121,4 @@ const Footer = () => {
 export default Footer;
 
  
-{/* <div className={footerContainer}>
-© 2024 Our eCom. All rights reserved.
-</div> */}
+
